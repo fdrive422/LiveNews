@@ -16,7 +16,7 @@ const fetchNews = async (
 			myQuery(
 				access_key: $access_key
 				categories: $categories
-				countries: "us"
+				countries: "us, gb"
 				sort: "published_desc"
 				keywords: $keywords
 			) {
@@ -41,7 +41,6 @@ const fetchNews = async (
 			}
 		}
 	`;
-
 
 	// Fetch function with Next.js 13 caching...
 	const res = await fetch(
