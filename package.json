@@ -7,7 +7,11 @@
   },
   "dependencies": {
     "@heroicons/react": "^2.0.13",
+    "add": "^2.0.6",
+    "graphql": "^16.6.0",
+    "graphql-request": "^5.1.0",
     "next": "latest",
+    "npm": "^9.3.0",
     "react": "18.2.0",
     "react-dom": "18.2.0"
   },
