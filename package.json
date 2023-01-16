@@ -12,6 +12,7 @@
     "graphql": "^16.6.0",
     "graphql-request": "^5.1.0",
     "next": "latest",
+    "next-themes": "^0.2.1",
     "npm": "^9.3.0",
     "react": "18.2.0",
     "react-dom": "18.2.0"
