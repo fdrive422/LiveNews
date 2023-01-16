@@ -1,5 +1,8 @@
 ### <a href="https://live-news-app-opal.vercel.app/">LIVE DEMO</a>
 
+![Screen Shot 2023-01-15 at 23 11 37 PM](https://user-images.githubusercontent.com/72363705/212618856-6f515c92-d90e-4d45-94f4-04352cf5915a.png)
+
+
 # Next.js + Tailwind CSS Example
 
 This example shows how to use [Tailwind CSS](https://tailwindcss.com/) [(v3.2)](https://tailwindcss.com/blog/tailwindcss-v3-2) with Next.js. It follows the steps outlined in the official [Tailwind docs](https://tailwindcss.com/docs/guides/nextjs).
