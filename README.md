@@ -1,6 +1,6 @@
 ### <a href="https://live-news-app-opal.vercel.app/">LIVE DEMO</a>
 
-![Screen Shot 2023-01-16 at 09 42 09 AM](https://user-images.githubusercontent.com/72363705/212738597-884f5636-18dd-443f-989f-02fcc9b41399.png)
+![Screen Shot 2023-01-16 at 09 44 11 AM](https://user-images.githubusercontent.com/72363705/212738893-1306372b-c782-4a66-aacb-d2cb061c1ff0.png)
 
 # Next.js + Tailwind CSS Example
 
