@@ -1,6 +1,5 @@
 type Article = {
-	author: string | null;
-	category: string;
+	category: string | null;
 	country: string;
 	description: string;
 	image: string | null;
@@ -9,6 +8,7 @@ type Article = {
 	source: string;
 	title: string;
 	url: string;
+	author: string | null;
 };
 
 type Pagination = {
@@ -24,9 +24,9 @@ type NewsResponse = {
 };
 
 type Category =
+	| "general"
 	| "business"
 	| "entertainment"
-	| "general"
 	| "health"
 	| "science"
 	| "sports"
