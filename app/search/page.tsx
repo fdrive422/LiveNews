@@ -12,6 +12,13 @@ async function SearchPage({ searchParams }: Props) {
 		true
 	);
 
+	if (!news.data.length) {
+		return (
+			<h1 className="text-4xl font-serif capitalize px-10 pt-5">
+				No news found.
+			</h1>
+		);
+	}
 	return (
 		<div>
 			<h1 className="headerTitle">

@@ -48,7 +48,7 @@ const fetchNews = async (
 		{
 			method: "POST",
 			cache: isDynamic ? "no-cache" : "default",
-			next: isDynamic ? { revalidate: 0 } : { revalidate: 20 },
+			next: isDynamic ? { revalidate: 0 } : { revalidate: 120 },
 			headers: {
 				"Content-Type": "application/json",
 				Authorization: `Apikey ${process.env.STEPZEN_API_KEY}`,
@@ -62,13 +62,19 @@ const fetchNews = async (
 				},
 			}),
 		});
+	console.log(
+		'LOADING NEW DATA FROM API for category >>>',
+		category,
+		keywords
+	);
+
 	const newsResponse = await res.json();
 
 	// Sort function by images vs no images
-	const news = sortNewsByImage(newsResponse.data.myQuery);
+	const data = sortNewsByImage(newsResponse.data.myQuery);
 
 	// return res
-	return news;
+	return data || 'fetch error';
 };
 
 export default fetchNews;
