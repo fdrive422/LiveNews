@@ -1,4 +1,4 @@
-### <a href="https://live-news-app-fdrive422.vercel.app/">LIVE DEMO</a>
+### <a href="https://live-news-fdrive422.vercel.app/">LIVE DEMO</a>
 
 ![Screen Shot 2023-01-16 at 09 44 11 AM](https://user-images.githubusercontent.com/72363705/212738893-1306372b-c782-4a66-aacb-d2cb061c1ff0.png)
 
