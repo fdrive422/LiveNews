@@ -13,10 +13,13 @@ function Header() {
 					<h1 className="font-serif text-4xl text-center">
 						The{" "}
 						<span className="underline decoration-6 decoration-orange-400">
-							FDRIVE
+							Live
 						</span>{" "}
 						News
 					</h1>
+					{/* <p className="font-serif text-xsl text-center">
+						Brought to you by: FDrive
+					</p> */}
 				</Link>
 				<div className="flex items-center justify-end space-x-2">
 					<DarkModeButton />
