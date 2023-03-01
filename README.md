@@ -1,6 +1,7 @@
 ### <a href="https://live-news-fdrive422.vercel.app/">LIVE DEMO</a>
 
-![Screen Shot 2023-01-16 at 09 44 11 AM](https://user-images.githubusercontent.com/72363705/212738893-1306372b-c782-4a66-aacb-d2cb061c1ff0.png)
+<!-- ![Screen Shot 2023-01-16 at 09 44 11 AM](https://user-images.githubusercontent.com/72363705/212738893-1306372b-c782-4a66-aacb-d2cb061c1ff0.png) -->
+![Screen Shot 2023-02-28 at 19 12 47 PM](https://user-images.githubusercontent.com/72363705/222036061-a003b3e3-7eff-4195-8cda-c6929ccff9be.png)
 
 # Next.js + Tailwind CSS Example
 
