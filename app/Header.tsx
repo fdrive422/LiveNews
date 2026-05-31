@@ -1,40 +1,34 @@
-import { Bars3Icon } from "@heroicons/react/24/solid";
 import Link from "next/link";
 import DarkModeButton from "./DarkModeButton";
+import HamburgerMenu from "./HamburgerMenu";
 import NavLinks from "./NavLinks";
 import SearchBox from "./SearchBox";
 
 function Header() {
   return (
-    <header>
-      <div className="grid grid-cols-3 p-10 items-center">
-        <Bars3Icon className="h-8 w-8 cursor-pointer" href="/" />
-        <Link href="/" prefetch={false}>
-          {/* text-[min(24vw,40px)] */}
-          <h1 className="font-serif text-4xl text-center">
+    <header className="sticky top-0 z-50 bg-gray-100/95 dark:bg-zinc-900/95 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 transition-colors duration-300">
+      <div className="max-w-6xl mx-auto grid grid-cols-3 px-6 py-5 items-center">
+        <HamburgerMenu />
+
+        <Link href="/">
+          <h1 className="font-serif text-3xl lg:text-4xl text-center tracking-tight">
             The{" "}
-            <span className="underline decoration-6 decoration-orange-400">
+            <span className="underline decoration-4 decoration-orange-400 underline-offset-4">
               Live
             </span>{" "}
             News
           </h1>
-          {/* <p className="font-serif text-xsl text-center">
-						Brought to you by: FDrive
-					</p> */}
         </Link>
-        <div className="flex items-center justify-end space-x-2">
-          <DarkModeButton />
 
-          <button className="hidden md:inline bg-slate-900 text-white px-4 lg:px-8 py-2 lg:py-3 rounded-full dark:bg-slate-800">
+        <div className="flex items-center justify-end space-x-3">
+          <DarkModeButton />
+          <button className="hidden md:inline bg-slate-900 dark:bg-slate-700 hover:bg-slate-700 dark:hover:bg-slate-600 text-white text-sm font-medium px-5 py-2 rounded-full transition-colors duration-200">
             Subscribe
           </button>
         </div>
       </div>
 
-      {/* NavLinks */}
       <NavLinks />
-
-      {/* SearchBox */}
       <SearchBox />
     </header>
   );

@@ -10,19 +10,24 @@ function ReadMoreButton({ article }: Props) {
 	const router = useRouter();
 
 	const handleClick = () => {
-		const queryString = Object.entries(article)
-			.map(([key, value]) => `${key}=${value}`)
-			.join("&");
-
-		const url = `/article?${queryString}`;
-		router.push(url);
+		const params = new URLSearchParams(
+			Object.entries(article).reduce<Record<string, string>>(
+				(acc, [key, value]) => {
+					if (value != null) acc[key] = String(value);
+					return acc;
+				},
+				{}
+			)
+		);
+		router.push(`/article?${params.toString()}`);
 	};
 
 	return (
 		<button
-			className="bg-orange-400 h-10 rounded-b-lg dark:text-gray-900 hover:bg-orange-500"
-			onClick={handleClick}>
-			Read More
+			onClick={handleClick}
+			className="bg-orange-400 hover:bg-orange-500 dark:text-zinc-900 text-white text-sm font-medium tracking-wide py-2.5 transition-colors duration-200"
+		>
+			Read More →
 		</button>
 	);
 }

@@ -13,25 +13,21 @@ function DarkModeButton() {
 	}, []);
 
 	if (!mounted) {
-		return null;
+		return <div className="h-6 w-6" />;
 	}
 
 	const currentTheme = theme === "system" ? systemTheme : theme;
 
-	return (
-		<div>
-			{currentTheme === "dark" ? (
-				<SunIcon
-					className="h-8 w-8 cursor-pointer text-yellow-500"
-					onClick={() => setTheme("light")}
-				/>
-			) : (
-				<MoonIcon
-					className="h-6 w-6 cursor-pointer text-gray-900"
-					onClick={() => setTheme("dark")}
-				/>
-			)}
-		</div>
+	return currentTheme === "dark" ? (
+		<SunIcon
+			className="h-6 w-6 cursor-pointer text-amber-400 hover:text-amber-300 transition-colors duration-200"
+			onClick={() => setTheme("light")}
+		/>
+	) : (
+		<MoonIcon
+			className="h-6 w-6 cursor-pointer text-slate-600 hover:text-slate-900 transition-colors duration-200"
+			onClick={() => setTheme("dark")}
+		/>
 	);
 }
 

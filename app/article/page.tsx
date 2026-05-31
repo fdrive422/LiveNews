@@ -1,25 +1,10 @@
 "use client";
 
-// import { notFound } from "next/navigation";
+import { Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import LiveTimestamp from "../LiveTimestamp";
 
-// type Props = {
-// 	searchParams?: Article;
-// };
-
-// function ArticlePage({ searchParams }: Props) {
-// 	if (
-// 		(searchParams && Object.entries(searchParams).length === 0) ||
-// 		!searchParams
-// 	) {
-// 		return notFound();
-// 	}
-
-// 	const article: Article = searchParams;
-
-function ArticlePage() {
-	//? This approach works, but is not preferred.
+function ArticleContent() {
 	const data = useSearchParams();
 	const article: Article = {
 		author: data.get("author"),
@@ -52,7 +37,7 @@ function ArticlePage() {
 
 					<div className="flex divide-x-2 space-x-4">
 						<h2 className="font-bold">By: {article.author}</h2>
-						<h2 className="fond-bold pl-4">
+						<h2 className="font-bold pl-4">
 							Source: {article.source}
 						</h2>
 						<p className="pl-4">
@@ -64,6 +49,14 @@ function ArticlePage() {
 				</div>
 			</section>
 		</article>
+	);
+}
+
+function ArticlePage() {
+	return (
+		<Suspense fallback={<div className="animate-pulse font-serif text-lg text-gray-400 text-center p-10">Loading article...</div>}>
+			<ArticleContent />
+		</Suspense>
 	);
 }
 

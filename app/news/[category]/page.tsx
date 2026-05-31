@@ -2,6 +2,8 @@ import fetchNews from "../../../lib/fetchNews";
 import NewsList from "../../NewsList";
 import { categories } from "../../../constants";
 
+export const revalidate = 120;
+
 type Props = {
 	params: { category: Category };
 };

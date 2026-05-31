@@ -1,14 +1,16 @@
 export default function sortNewsByImage(news: NewsResponse) {
-	// const newsWithImage = news.data.filter((item) => item.image !== null);
-	// const newsWithoutImage = news.data.filter((item) => item.image === null);
+	const seen = new Set<string>();
+	const unique = news.data.filter((item) => {
+		if (seen.has(item.url)) return false;
+		seen.add(item.url);
+		return true;
+	});
 
-	const newsWithImage = news.data.filter((item) => item.image);
-	const newsWithoutImage = news.data.filter((item) => !item.image);
+	const newsWithImage = unique.filter((item) => item.image);
+	const newsWithoutImage = unique.filter((item) => !item.image);
 
-	const sortedNewsResponse = {
+	return {
 		pagination: news.pagination,
 		data: [...newsWithImage, ...newsWithoutImage],
 	};
-
-	return sortedNewsResponse;
 }

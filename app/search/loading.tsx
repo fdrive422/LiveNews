@@ -1,4 +1,4 @@
-import { SkeletonGrid } from "./SkeletonGrid";
+import { SkeletonGrid } from "../SkeletonGrid";
 
 export default function Loading() {
 	return <SkeletonGrid />;

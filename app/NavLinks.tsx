@@ -6,13 +6,10 @@ import NavLink from "./NavLink";
 
 function NavLinks() {
 	const pathname = usePathname();
-	const isActive = (path: string) => {
-		return pathname?.split("/").pop() === path;
-	};
+	const isActive = (path: string) => pathname?.split("/").pop() === path;
 
-	//mysite.com/news/technology
 	return (
-		<nav className="grid grid-cols-4 md:grid-cols-7 text-xs md:text-sm gap-4 pb-10 max-w-6xl mx-auto border-b">
+		<nav className="flex flex-wrap justify-center gap-2 px-6 pb-4 max-w-6xl mx-auto">
 			{categories.map((category) => (
 				<NavLink
 					key={category}

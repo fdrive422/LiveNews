@@ -2,12 +2,30 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer components {
-	.navLink {
-		@apply hover:underline decoration-orange-400 text-center decoration-2 active:underline underline-offset-8 rounded-full p-4 hover:font-bold capitalize hover:scale-110 transition-transform duration-200 ease-out;
-	}
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position:  200% 0; }
+}
 
+.skeleton {
+  background: linear-gradient(90deg, #e2e8f0 25%, #cbd5e1 50%, #e2e8f0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s var(--delay, 0ms) infinite;
+}
+
+.dark .skeleton {
+  background: linear-gradient(90deg, #334155 25%, #475569 50%, #334155 75%);
+  background-size: 200% 100%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skeleton {
+    animation: none;
+  }
+}
+
+@layer components {
 	.headerTitle {
-		@apply text-4xl font-serif capitalize px-10 pt-5 underline decoration-orange-400 decoration-2 underline-offset-4 decoration-double;
+		@apply text-3xl lg:text-4xl font-serif capitalize px-10 pt-5 underline decoration-orange-400 decoration-2 underline-offset-4 decoration-double;
 	}
 }

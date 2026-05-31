@@ -12,10 +12,10 @@ type Article = {
 };
 
 type Pagination = {
-	count: Int;
-	limit: Int;
-	offset: Int;
-	total: Int;
+	count: number;
+	limit: number;
+	offset: number;
+	total: number;
 };
 
 type NewsResponse = {

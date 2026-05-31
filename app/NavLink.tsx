@@ -9,10 +9,12 @@ function NavLink({ category, isActive }: Props) {
 	return (
 		<Link
 			href={`/news/${category}`}
-			className={`navLink ${
-				isActive &&
-				"underline decoration-orange-400 underline-offset-4 font-bold text.lg"
-			}`}>
+			className={`text-sm capitalize px-4 py-1.5 rounded-full transition-all duration-200 ${
+				isActive
+					? "bg-orange-400 text-white dark:text-zinc-900 font-semibold shadow-sm"
+					: "text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 hover:text-slate-900 dark:hover:text-white"
+			}`}
+		>
 			{category}
 		</Link>
 	);

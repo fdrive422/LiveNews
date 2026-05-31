@@ -1,83 +1,57 @@
-import { gql } from "graphql-request";
 import sortNewsByImage from "./sortNewsByImage";
 
 const fetchNews = async (
-	category?: Category | string,
-	keywords?: string,
-	isDynamic?: boolean
+  category?: Category | string,
+  keywords?: string,
+  isDynamic?: boolean,
 ) => {
-	// GraphQL query
-	const query = gql`
-		query MyQuery(
-			$access_key: String!
-			$categories: String!
-			$keywords: String
-		) {
-			myQuery(
-				access_key: $access_key
-				categories: $categories
-				countries: "us"
-				sort: "published_desc"
-				keywords: $keywords
-			) {
-				data {
-					author
-					category
-					image
-					description
-					country
-					language
-					published_at
-					source
-					title
-					url
-				}
-				pagination {
-					count
-					limit
-					offset
-					total
-				}
-			}
-		}
-	`;
+  const emptyResponse: NewsResponse = {
+    data: [],
+    pagination: { count: 0, limit: 0, offset: 0, total: 0 },
+  };
 
-	// Fetch function with Next.js 13 caching...
-	const res = await fetch(
-		"https://capaobonito.stepzen.net/api/wintering-rattlesnake/__graphql",
-		{
-			method: "POST",
-			cache: isDynamic ? "no-cache" : "default",
-			next: isDynamic ? { revalidate: 0 } : { revalidate: 120 },
-			headers: {
-				"Content-Type": "application/json",
-				Authorization: `Apikey ${process.env.STEPZEN_API_KEY}`,
-			},
-			body: JSON.stringify({
-				query,
-				variables: {
-					access_key: process.env.MEDIASTACK_API_KEY,
-					categories: category,
-					keywords: keywords,
-				},
-			}),
-		});
-	console.log(
-		'LOADING NEW DATA FROM API for category >>>',
-		category,
-		keywords
-	);
+  const params = new URLSearchParams({
+    access_key: process.env.MEDIASTACK_API_KEY!,
+    categories: category || "general",
+    countries: "us",
+    sort: "published_desc",
+    limit: "25",
+    offset: "0",
+  });
 
-	const newsResponse = await res.json();
+  if (keywords) params.set("keywords", keywords);
 
-	// Sort function by images vs no images
-	const data = sortNewsByImage(newsResponse.data.myQuery);
+  const url = `http://api.mediastack.com/v1/news?${params}`;
 
-	// return res
-	return data || 'fetch error';
+  let res: Response;
+  try {
+    res = await fetch(url, {
+      ...(isDynamic ? { cache: "no-store" } : { next: { revalidate: 120 } }),
+    });
+  } catch (err) {
+    console.error("News fetch failed:", err);
+    return emptyResponse;
+  }
+
+  if (!res.ok) {
+    console.error("News API error:", res.status, res.statusText);
+    return emptyResponse;
+  }
+
+  let newsResponse: NewsResponse;
+  try {
+    newsResponse = await res.json();
+  } catch (err) {
+    console.error("News API returned non-JSON response:", err);
+    return emptyResponse;
+  }
+
+  if (!Array.isArray(newsResponse?.data)) {
+    console.error("News API returned unexpected format:", newsResponse);
+    return emptyResponse;
+  }
+
+  return sortNewsByImage(newsResponse);
 };
 
 export default fetchNews;
-
-// Example Import
-// stepzen import curl "http://api.mediastack.com/v1/news?access_key=***&countries=us%2Cgb&limit=100&offset=0&sort=published_desc"
